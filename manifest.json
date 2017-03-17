@@ -1,0 +1,64 @@
+{
+    "name":"Cirelli Style Tabs",
+    "version": "0.001",
+    "description": "Tree style tabs for Chrome.",
+    "manifest_version": 2,
+    "minimum_chrome_version": "29",
+
+    "background": { 
+        "scripts": [
+            "background.js"
+        ],
+        "persistent":false
+    },
+
+    "page_action" :{
+        "default_icon" : "icon-128.png",
+        "default_title" : "Tabs",
+        "default_popup":"tabs_popup.html"
+    },
+
+    "icons" : {
+        "24" : "icon-24.png",
+        "32" : "icon-32.png",
+        "48" : "icon-48.png",
+        "128" : "icon-128.png"
+    },
+
+    "content_scripts": [
+        {
+            "run_at":"document_end",
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "bower_components/q/q.js",
+                "bower_components/jquery/dist/jquery.min.js",
+                "js/vendor/md5.js",
+                "js/lib/extras-dom.js",
+                "js/lib/extras-string.js",
+                "js/lib/Node.js",
+                "js/lib/TabNode.js",
+                "js/lib/WindowNode.js",
+                "templates/treePanel/js/TreePanelNode.js",
+                "templates/treePanel/js/TreePanelDragable.js",
+                "templates/treePanel/js/treePanel.js",
+                "js/contentscript/main.js"
+            ],
+            "css":[
+                "bower_components/bootstrap/dist/css/bootstrap.min.css"
+            ]
+        }
+    ],
+
+    "web_accessible_resources": [
+        "templates/*"
+    ],
+
+    "permissions" : [
+        "tabs",
+        "storage",
+        "<all_urls>",
+         "identity"
+    ]
+}
